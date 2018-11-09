@@ -18,7 +18,7 @@ package workgroup
 import "sync"
 
 // A Group manages a set of goroutines with related lifetimes.
-// The zero value for a Group is fully usable without initalisation.
+// The zero value for a Group is fully usable without initialisation.
 type Group struct {
 	fn []func(<-chan struct{}) error
 }
@@ -30,7 +30,7 @@ func (g *Group) Add(fn func(<-chan struct{}) error) {
 	g.fn = append(g.fn, fn)
 }
 
-// Run exectues each function registered via Add in its own goroutine.
+// Run executes each function registered via Add in its own goroutine.
 // Run blocks until all functions have returned.
 // The first function to return will trigger the closure of the channel
 // passed to each function, who should in turn, return.
